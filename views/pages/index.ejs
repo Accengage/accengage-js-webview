@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+<div data-role="page" style="background-color: lightskyblue">
+
+    <div align="right">
+        <a href="http://www.google.com?bma4sclose=true" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext"/></a>
+    </div>
+
+    <div role="main" class="ui-content ">
+        <div align="center">
+            <h1>A4SWebView Tests</h1>
+        </div>
+
+        <div align="center">
+            <a class="ui-btn ui-corner-all" onClick="trackLead()">Track Lead</a>
+        </div>
+
+        <div align="center">
+            <a class="ui-btn ui-corner-all" onClick="trackCart()">Track Cart</a>
+        </div>
+
+        <div align="center">
+            <a class="ui-btn ui-corner-all" onClick="trackPurchase()">Track Purchase</a>
+        </div>
+
+        <div align="center">
+            <a class="ui-btn ui-corner-all" width="200px" onClick="trackEvent()">Track Event</a>
+        </div>
+
+        <div align="center">
+            <a class="ui-btn ui-corner-all" onClick="setView()">Set View</a>
+        </div>
+
+        <div align="center">
+            <a class="ui-btn ui-corner-all" onClick="updateDeviceInfo()">Update Device Info</a>
+        </div>
+
+    </div><!-- /content -->
+
+    <script>
+
+        function trackLead() {
+            var data = "{\"value\":\"leadValue\",\"label\":\"leadLabel\"}";
+            A4S.trackLead(data);
+        }
+
+        function trackCart() {
+            var data = "{\"cartId\":\"cartId\",\n" +
+                         "\"quantity\":1,\n" +
+                         "\"category\":\"catItem\",\n" +
+                         "\"label\":\"labelItem\",\n" +
+                         "\"price\":23,\n" +
+                         "\"articleId\":\"idItem\",\n" +
+                         "\"currency\":\"EUR\"\n}";
+            A4S.trackAddToCart(data);
+        }
+
+        function trackPurchase() {
+            var data = " {\n" +
+                       "   \"purchaseId\":\"777\",\n" +
+                       "   \"items\":[\n" +
+                       "      {\n" +
+                       "         \"id\":\"idItem1\",\n" +
+                       "         \"quantity\":1,\n" +
+                       "         \"category\":\"cat1\",\n" +
+                       "         \"label\":\"item1\",\n" +
+                       "         \"price\":23,\n" +
+                       "         \"currency\":\"EUR\"\n" +
+                       "      },\n" +
+                       "      {\n" +
+                       "         \"id\":\"idItem2\",\n" +
+                       "         \"quantity\":2,\n" +
+                       "         \"category\":\"cat2\",\n" +
+                       "         \"label\":\"item2\",\n" +
+                       "         \"price\":50,\n" +
+                       "         \"currency\":\"EUR\"\n" +
+                       "      }\n" +
+                       "   ],\n" +
+                       "   \"totalPrice\":123,\n" +
+                       "   \"currency\":\"EUR\"\n" +
+                       "}";
+            A4S.trackPurchase(data);
+        }
+
+        function trackEvent() {
+            var data = "myCustomEvent";
+            A4S.trackEvent(567, data);
+        }
+
+        function setView() {
+            A4S.setView("PopupPromoActivity");
+        }
+
+        function updateDeviceInfo() {
+            var data = "{\n" +
+                       "    \"firstname\":\"François\",\n" +
+                       "    \"lastname\":\"Hollande\"\n" +
+                       "}";
+            A4S.updateDeviceInfo(data);
+        }
+
+    </script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "lc",
+  "version": "0.0.1",
+  "description": "LaCentrale",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrei Mandychev",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "^4.14.0"
+  }
+}
